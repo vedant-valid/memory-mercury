@@ -11,7 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./Login";
 import { setUpCards } from "./utils";
 import "./App.css";
-function game() {
+function Game() {
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [startedAt, setStartedAt] = useState(null);
   const [endedAt, setEndedAt] = useState(null);
@@ -19,7 +19,6 @@ function game() {
   const [moves, setMoves] = useState(0);
   const [misses, setMisses] = useState(0);
   const [matchedCards, setMatchedCards] = useState(0);
-  // const [playSuccessSound, setPlaySuccessSound] = useState(false);
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const initializeGame = () => {
@@ -93,14 +92,6 @@ function game() {
         // Add matched cards no.
         setMatchedCards(prev => prev + 1);
 
-      //   // Play matching cards sound
-      //   setPlaySuccessSound(true);
-      // } else {
-      //   if (card1.flippedCount > 0 && card2.flippedCount > 0) {
-      //     // Increment misses
-      //     setMisses(prev => prev + 1);
-      //   }
-
         // Will Flip cards back after 1 second
         const timeId = setTimeout(() => {
           flipBack();
@@ -135,24 +126,6 @@ function game() {
     }
   }, [flippedCards]);
 
-  // useEffect(() => {
-  //   if (cards.length) {
-  //     const unmatchedCards = cards.filter(c => !c.matched);
-  //     if (!unmatchedCards.length) {
-  //       setTimeout(() => {
-  //         setEndedAt(new Date().toISOString());
-  //         new Audio('/audio/level-win.mp3').play();
-  //       }, 1000);
-  //     }
-  //   }
-  // }, [cards]);
-
-  // useEffect(() => {
-  //   if (playSuccessSound) {
-  //     new Audio('/audio/success-sound.mp3').play();
-  //     setPlaySuccessSound(false);
-  //   }
-  // }, [playSuccessSound]);
 
   return (
     <Layout>
@@ -173,7 +146,32 @@ function game() {
       )}
     </Layout>
   );
+
 }
+// routing thru pages
+function App() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/leaderboard" element={
+        <ProtectedRoute>
+          <Layout>
+            <Leaderboard />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/" element={
+        <ProtectedRoute>
+          <Game />
+        </ProtectedRoute>
+      } />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}
+
+export default App;
+
 
 
 
