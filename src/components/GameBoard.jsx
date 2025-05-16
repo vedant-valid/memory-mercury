@@ -1,4 +1,4 @@
-import BoardCard from './BoardCard';
+import BoardCard from './DetailCard';
 
 function GameBoard({ cards, handleCardClick, grid }) {
   return (

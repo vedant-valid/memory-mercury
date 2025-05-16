@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { calculateGameDuration } from '../utils';
-import StatsCard from './StatsCard';
+import StatsCard from './CanvasCard';
 
 function Timer({ startedAt, endedAt }) {
   const [duration, setDuration] = useState('00:00');

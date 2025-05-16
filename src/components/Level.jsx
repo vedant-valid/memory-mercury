@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { gameLevels } from '../utils/constants';
+import { gameLevels } from '../utils/Fixed';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 function Levels({ handleLevelClick }) {

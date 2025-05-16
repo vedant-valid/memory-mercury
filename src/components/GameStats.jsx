@@ -1,5 +1,5 @@
 import { calculateAccuracy } from '../utils';
-import StatsCard from './StatsCard';
+import StatsCard from './CanvasCard';
 import Timer from './Timer';
 
 function GameStats({ stats }) {
