@@ -19,4 +19,27 @@ export default defineConfig({
     },
   },
   plugins: [react(),tailwindcss()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js', // or .ts for TypeScript
+  },
+  ssr: {
+    external: [
+      "firebase",
+      "@firebase/app",
+      "@firebase/auth",
+      "@firebase/firestore"
+    ]
+  }
+  // server: { // Removing server.deps.inline for this attempt
+  //   deps: {
+  //     inline: [
+  //       "firebase",
+  //       "@firebase/app",
+  //       "@firebase/auth",
+  //       "@firebase/firestore",
+  //     ]
+  //   }
+  // }
 })
