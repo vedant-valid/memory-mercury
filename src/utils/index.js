@@ -35,6 +35,9 @@ function Card(id, ill) {
   };
   
   export const calculateGameDuration = (startDate, endDate = null) => {
+    if (!startDate) {
+      return "00:00";
+    }
     const start = new Date(startDate).getTime();
     const now = endDate ? new Date(endDate).getTime() : new Date().getTime();
     const duration = now - start;
